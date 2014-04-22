@@ -10,8 +10,18 @@ import org.junit.*
  */
 @TestFor(Livre)
 class LivreTests {
+	
+	Livre livre = new Livre(titre : "Exemple de titre", nbEx : 1, nbExDispos : 2)
 
-    void testSomething() {
-       fail "Implement me"
+    void testCreate() {
+	
+		assertEquals(livre.titre,"Exemple de titre")
+		assertEquals(livre.nbEx,1)
+		assertEquals(livre.nbExDispos,2)
     }
+	
+	void testToString() {
+		
+		assertTrue(livre.toString() != null)
+	}
 }

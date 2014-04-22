@@ -11,7 +11,14 @@ import org.junit.*
 @TestFor(Reservation)
 class ReservationTests {
 
-    void testSomething() {
-       fail "Implement me"
-    }
+	Reservation reservation = new Reservation(code : 123, dateReservation : "12/12/2012")
+	
+    void testCreate() {
+
+		def date = reservation.dateReservation.format('yyyy-MM-dd')
+		assertEquals(reservation.code,123)
+		assertEquals(date,"2012-12-12")
+			
+	}
+	
 }

@@ -11,7 +11,10 @@ import org.junit.*
 @TestFor(Type)
 class TypeTests {
 
-    void testSomething() {
-       fail "Implement me"
+	Type type = new Type(intitule : "essai")
+	
+    void testCreate() {
+	
+		assertEquals(type.intitule,"essai")
     }
 }

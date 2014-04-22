@@ -10,8 +10,16 @@ import org.junit.*
  */
 @TestFor(Auteur)
 class AuteurTests {
-
-    void testSomething() {
-       fail "Implement me"
+	
+	Auteur auteur = new Auteur(nom : "Jean", prenom : "Exemple")
+	
+    void testCreate() {
+	
+        assertEquals(auteur.nom,"Jean")
+	    assertEquals(auteur.prenom,"Exemple")
     }
+	
+	void testtoString() {
+		assertTrue(auteur.toString() != null)
+	}
 }
