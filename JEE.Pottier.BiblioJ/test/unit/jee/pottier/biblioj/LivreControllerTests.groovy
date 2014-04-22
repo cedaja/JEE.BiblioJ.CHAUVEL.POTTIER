@@ -3,7 +3,6 @@ package jee.pottier.biblioj
 
 
 import org.junit.*
-
 import grails.test.mixin.*
 
 @TestFor(LivreController)
@@ -12,8 +11,9 @@ class LivreControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-
-        params["titre"] = "1984"
+		Type typeLivre = new Type( intitule : "Dystopie") 
+        params["titre"] = 's'
+		params["type"] = typeLivre
 		params["nbEx"] = 10
 		params["nbExDispos"] = 2
     }
@@ -104,10 +104,11 @@ class LivreControllerTests {
 
         // test invalid parameters in update
         params.id = livre.id
-		params["titre"] = ""
-		params["nbEx"] = 1
-		params["nbExDispos"] = 1
-		
+		Type typeLivre = new Type( intitule : "Dystopie") 
+        params["titre"] = ""
+		params["type"] = typeLivre
+		params["nbEx"] = 10
+		params["nbExDispos"] = 2
         controller.update()
 
         assert view == "/livre/edit"
