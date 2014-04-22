@@ -3,6 +3,7 @@ package jee.pottier.biblioj
 
 
 import org.junit.*
+
 import grails.test.mixin.*
 
 @TestFor(LivreController)
@@ -11,8 +12,10 @@ class LivreControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+
+        params["titre"] = "1984"
+		params["nbEx"] = 10
+		params["nbExDispos"] = 2
     }
 
     void testIndex() {
@@ -51,19 +54,21 @@ class LivreControllerTests {
     }
 
     void testShow() {
-        controller.show(0)
+        controller.show()
 
         assert flash.message != null
         assert response.redirectedUrl == '/livre/list'
 
-       /* populateValidParams(params)
+        populateValidParams(params)
         def livre = new Livre(params)
 
         assert livre.save() != null
 
         params.id = livre.id
 
-        assert model.livreInstance == livre */
+        def model = controller.show()
+
+        assert model.livreInstance == livre
     }
 
     void testEdit() {
@@ -99,8 +104,10 @@ class LivreControllerTests {
 
         // test invalid parameters in update
         params.id = livre.id
-        //TODO: add invalid values to params object
-
+		params["titre"] = ""
+		params["nbEx"] = 1
+		params["nbExDispos"] = 1
+		
         controller.update()
 
         assert view == "/livre/edit"
